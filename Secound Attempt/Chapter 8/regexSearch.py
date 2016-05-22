@@ -13,10 +13,13 @@ be printed to the screen.
 '''
 import os, re, pprint
 
+'''
 def getAllFiles():
     files=list(os.listdir())
     return files
+'''
 
+'''
 def onlyTextFiles(list):
     text = []
     textreg = re.compile(r'\w+.txt$')
@@ -25,6 +28,14 @@ def onlyTextFiles(list):
         #temp=temp.strip("[]'")
         if temp != '':
             text.append(temp)
+    return text
+'''
+def textFiles():
+    text = []
+    for filename in os.listdir():
+        if filename.endswith('.txt'):
+            text.append(filename)
+    #print(text)
     return text
 
 def searchText(fileList,sstring):
@@ -37,8 +48,8 @@ def searchText(fileList,sstring):
             content = file.read()
             if search.findall(content):
                 files.append(fileList[i])
-    if files =='':
-        print('The search did not return any results')
+        if files =='':
+            print('The search did not return any results')
 
     print('The string you are searching for appears in ')
     pprint.pprint(str(files).strip("[]'"))
@@ -52,9 +63,10 @@ def searchString():
 def main():
 
     string=searchString()
-    allfiles=getAllFiles()
-    textFiles=onlyTextFiles(allfiles)
-    searchText(textFiles,string)
+    #allfiles=getAllFiles()
+    #textFiles=onlyTextFiles(allfiles)
+    textList=textFiles()
+    searchText(textList,string)
 
 if __name__ == '__main__':
     main()

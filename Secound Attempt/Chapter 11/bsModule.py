@@ -10,7 +10,7 @@ import requests, bs4
 
 def reqPage():
     
-    res = requests.get('https://www.nostarch.com')
+    res = requests.get('https://www.nostarch.com' )
     try:
         res.raise_for_status()
     except Exception as err:
@@ -29,4 +29,4 @@ def main():
     bsSoup(resobj)
 
 if __name__ == '__main__':
-    main()
+    main()  

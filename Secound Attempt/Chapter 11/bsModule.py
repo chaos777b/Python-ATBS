@@ -10,19 +10,19 @@ import requests, bs4
 
 def reqPage():
     
-    res = requests.get('https://www.nostarch.com', verify=True)
+    res = requests.get('https://www.nostarch.com')
     try:
         res.raise_for_status()
     except Exception as err:
         print('There was a problem: ' + str(err))
+    print(type(res))
     return(res)
 
 def bsSoup(resobj):
-    exampleSoup = bs4.BeautifulSoup(resobj)
+    exampleSoup = bs4.BeautifulSoup(resobj.text, "html.parser")
     elms = exampleSoup.select('p #author')
-    print(type(elems))
-    print(len(elems))
-    print(type(elems[0]))
+    print(type(elms))
+    print(len(elms))
 
 def main():
     resobj=reqPage()

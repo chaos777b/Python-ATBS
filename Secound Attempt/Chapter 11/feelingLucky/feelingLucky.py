@@ -18,6 +18,7 @@ def setup_logging(
 
     path = default_path
     value = os.getenv(env_key, None)
+
     if value:
         path = value
     if os.path.exists(path):
@@ -37,12 +38,12 @@ def main():
     logger.info('Start request to google')
     
 
-    res = requests.get('http://goog.com/search?q=' + ' '.join(sys.argv[1:]))
+    res = requests.get('http://google.com/search?q=' + ' '.join(sys.argv[1:]))
     try:
         res.raise_for_status()
     except Exception as err:
-        logger.info('There was a problem: ', exc_info=True)
-        logger.error('There was a problem: %s' % (err))
+        logger.error('There was a problem: ', exc_info=True)
+        logger.info('There was a problem: %s' % (err))
 
 
     my_module.foo()

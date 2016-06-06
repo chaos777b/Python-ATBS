@@ -22,8 +22,7 @@ class Bar(object):
     def bar(self):
         self.logger.info('Hi, bar')
         res = requests.get('http://apple.com')
-        self.logger.error('test error')
-        self.logger.warn('test warn')
+        
 def main():
 
     return 
